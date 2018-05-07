@@ -10,7 +10,7 @@ acceptable = (accept...) ->
     else if value?.trim?()?.match?(/^[\w-]+\/[\w-]+$/)
       return value.trim().toLowerCase()
     else if value?.trim?()?.match?(/^[\w-]+$/)
-      return mime.lookup value.trim().toLowerCase()
+      return mime.getType value.trim().toLowerCase()
 
   if !accept.length
     accept.push '*/*'

@@ -30,43 +30,43 @@
     it('should accept an argument list of extensions', function() {
       var test;
       test = acceptable('json', 'txt', 'html', 'jpeg', 'xml');
-      unit["function"](test);
+      unit.function(test);
       return null;
     });
     it('should accept an array of extensions', function() {
       var test;
       test = acceptable(['json', 'txt', 'html', 'jpeg', 'xml']);
-      unit["function"](test);
+      unit.function(test);
       return null;
     });
     it('should accept an argument list of mime types', function() {
       var test;
       test = acceptable('application/json', 'application/javascript', 'text/plain');
-      unit["function"](test);
+      unit.function(test);
       return null;
     });
     it('should accept an array of mime types', function() {
       var test;
       test = acceptable(['application/json', 'application/javascript', 'text/plain']);
-      unit["function"](test);
+      unit.function(test);
       return null;
     });
     it('should accept an argument list of extensions or mime types', function() {
       var test;
       test = acceptable('json', 'application/js', 'xml', 'text/plain');
-      unit["function"](test);
+      unit.function(test);
       return null;
     });
     it('should accept an array of extensions or mime types', function() {
       var test;
       test = acceptable(['json', 'application/js', 'xml', 'text/plain']);
-      unit["function"](test);
+      unit.function(test);
       return null;
     });
     it('should accept an argument list that contain arrays', function() {
       var test;
       test = acceptable('js', ['application/json', 'xml'], 'text/plain');
-      unit["function"](test);
+      unit.function(test);
       return null;
     });
     it('should throw an error if any argument is not a string or array of strings', function() {

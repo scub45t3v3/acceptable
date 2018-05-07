@@ -1,14 +1,11 @@
 (function() {
-  var _, acceptable, exports, mime,
-    slice = [].slice;
+  var _, acceptable, exports, mime;
 
   _ = require('underscore');
 
   mime = require('mime');
 
-  acceptable = function() {
-    var accept;
-    accept = 1 <= arguments.length ? slice.call(arguments, 0) : [];
+  acceptable = function(...accept) {
     accept = _.flatten(accept);
     accept = _.map(accept, function(value) {
       var ref, ref1;
@@ -17,7 +14,7 @@
       } else if (value != null ? typeof value.trim === "function" ? (ref = value.trim()) != null ? typeof ref.match === "function" ? ref.match(/^[\w-]+\/[\w-]+$/) : void 0 : void 0 : void 0 : void 0) {
         return value.trim().toLowerCase();
       } else if (value != null ? typeof value.trim === "function" ? (ref1 = value.trim()) != null ? typeof ref1.match === "function" ? ref1.match(/^[\w-]+$/) : void 0 : void 0 : void 0 : void 0) {
-        return mime.lookup(value.trim().toLowerCase());
+        return mime.getType(value.trim().toLowerCase());
       }
     });
     if (!accept.length) {
