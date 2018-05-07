@@ -1,7 +1,7 @@
 {
   "name": "acceptable",
   "description": "Content negotiation middleware for Express and Restify",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "public": true,
   "main": "index.js",
   "license": "MIT",
