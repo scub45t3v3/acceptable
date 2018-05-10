@@ -11,7 +11,7 @@
       var ref, ref1;
       if (!_.isString(value)) {
         throw new TypeError('Invalid extension or mime/type provided');
-      } else if (value != null ? typeof value.trim === "function" ? (ref = value.trim()) != null ? typeof ref.match === "function" ? ref.match(/^[\w-]+\/[\w-]+$/) : void 0 : void 0 : void 0 : void 0) {
+      } else if (value != null ? typeof value.trim === "function" ? (ref = value.trim()) != null ? typeof ref.match === "function" ? ref.match(/^[\w-]+\/[\w\.\+-]+$/) : void 0 : void 0 : void 0 : void 0) {
         return value.trim().toLowerCase();
       } else if (value != null ? typeof value.trim === "function" ? (ref1 = value.trim()) != null ? typeof ref1.match === "function" ? ref1.match(/^[\w-]+$/) : void 0 : void 0 : void 0 : void 0) {
         return mime.getType(value.trim().toLowerCase());

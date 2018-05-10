@@ -7,7 +7,7 @@ acceptable = (accept...) ->
   accept = _.map accept, (value) ->
     if !_.isString(value)
       throw new TypeError 'Invalid extension or mime/type provided'
-    else if value?.trim?()?.match?(/^[\w-]+\/[\w-]+$/)
+    else if value?.trim?()?.match?(/^[\w-]+\/[\w\.\+-]+$/)
       return value.trim().toLowerCase()
     else if value?.trim?()?.match?(/^[\w-]+$/)
       return mime.getType value.trim().toLowerCase()
