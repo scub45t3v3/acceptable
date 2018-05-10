@@ -9,16 +9,16 @@ app.get '/test', (req, res, next) ->
   res.format
     'json': ->
       res
-        .status(200)
+        .status 200
         .send req.headers
     'default': ->
       res
-        .status(200)
+        .status 200
         .send req.headers.accept
 
 app.use (err, req, res, next) ->
   res
-    .status(406)
+    .status 406
     .send 'Not Acceptable'
 
 describe '#acceptable', ->
@@ -94,18 +94,18 @@ describe '#acceptable', ->
 
   it 'should preform content negotiation', (done) ->
     unit
-      .httpAgent(app)
-      .get('/test')
-      .set('Accept', 'application/json')
-      .expect(200)
+      .httpAgent app
+      .get '/test'
+      .set 'Accept', 'application/json'
+      .expect 200
       .end (err, res) ->
         return !res.body
 
     unit
-      .httpAgent(app)
-      .get('/test')
-      .set('Accept', 'application/xml')
-      .expect(406)
+      .httpAgent app
+      .get '/test'
+      .set 'Accept', 'application/xml'
+      .expect 406
       .end done
 
     return null
