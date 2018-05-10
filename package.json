@@ -43,6 +43,7 @@
     "unit.js": "^2.0.0"
   },
   "dependencies": {
+    "debug": "^3.1.0",
     "mime": "^2.3.1",
     "underscore": "^1.9.0"
   }
