@@ -89,10 +89,11 @@
       });
       return null;
     });
-    return it('should preform content negotiation', function(done) {
-      unit.httpAgent(app).get('/test').set('Accept', 'application/json').expect(200).end(function(err, res) {
-        return !res.body;
-      });
+    it('should respond with 200 for acceptable content negotiation', function(done) {
+      unit.httpAgent(app).get('/test').set('Accept', 'application/json').expect(200).end(done);
+      return null;
+    });
+    return it('should respond with 406 for unacceptable content negotiation', function(done) {
       unit.httpAgent(app).get('/test').set('Accept', 'application/xml').expect(406).end(done);
       return null;
     });

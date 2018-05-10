@@ -92,15 +92,17 @@ describe '#acceptable', ->
 
     return null
 
-  it 'should preform content negotiation', (done) ->
+  it 'should respond with 200 for acceptable content negotiation', (done) ->
     unit
       .httpAgent app
       .get '/test'
       .set 'Accept', 'application/json'
       .expect 200
-      .end (err, res) ->
-        return !res.body
+      .end done
 
+    return null
+
+  it 'should respond with 406 for unacceptable content negotiation', (done) ->
     unit
       .httpAgent app
       .get '/test'
