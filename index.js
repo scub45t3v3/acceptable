@@ -1,5 +1,5 @@
 (function() {
-  var _, acceptable, exports, mime;
+  var _, acceptable, mime;
 
   _ = require('underscore');
 
@@ -34,6 +34,6 @@
     };
   };
 
-  exports = module.exports = acceptable;
+  module.exports = acceptable;
 
 }).call(this);

@@ -27,4 +27,4 @@ acceptable = (accept...) ->
 
     return next error
 
-exports = module.exports = acceptable
+module.exports = acceptable
