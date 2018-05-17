@@ -9,7 +9,7 @@ should accept an argument list of extensions.
 ```js
 var test;
 test = acceptable('json', 'txt', 'html', 'jpeg', 'xml');
-unit["function"](test);
+unit.function(test);
 return null;
 ```
 
@@ -18,7 +18,7 @@ should accept an array of extensions.
 ```js
 var test;
 test = acceptable(['json', 'txt', 'html', 'jpeg', 'xml']);
-unit["function"](test);
+unit.function(test);
 return null;
 ```
 
@@ -27,7 +27,7 @@ should accept an argument list of mime types.
 ```js
 var test;
 test = acceptable('application/json', 'application/javascript', 'text/plain');
-unit["function"](test);
+unit.function(test);
 return null;
 ```
 
@@ -36,7 +36,7 @@ should accept an array of mime types.
 ```js
 var test;
 test = acceptable(['application/json', 'application/javascript', 'text/plain']);
-unit["function"](test);
+unit.function(test);
 return null;
 ```
 
@@ -45,7 +45,7 @@ should accept an argument list of extensions or mime types.
 ```js
 var test;
 test = acceptable('json', 'application/js', 'xml', 'text/plain');
-unit["function"](test);
+unit.function(test);
 return null;
 ```
 
@@ -54,7 +54,7 @@ should accept an array of extensions or mime types.
 ```js
 var test;
 test = acceptable(['json', 'application/js', 'xml', 'text/plain']);
-unit["function"](test);
+unit.function(test);
 return null;
 ```
 
@@ -63,7 +63,7 @@ should accept an argument list that contain arrays.
 ```js
 var test;
 test = acceptable('js', ['application/json', 'xml'], 'text/plain');
-unit["function"](test);
+unit.function(test);
 return null;
 ```
 
@@ -90,12 +90,16 @@ unit.error(function() {
 return null;
 ```
 
-should preform content negotiation.
+should respond with 200 for acceptable content negotiation.
 
 ```js
-unit.httpAgent(app).get('/test').set('Accept', 'application/json').expect(200).end(function(err, res) {
-  return !res.body;
-});
+unit.httpAgent(app).get('/test').set('Accept', 'application/json').expect(200).end(done);
+return null;
+```
+
+should respond with 406 for unacceptable content negotiation.
+
+```js
 unit.httpAgent(app).get('/test').set('Accept', 'application/xml').expect(406).end(done);
 return null;
 ```
