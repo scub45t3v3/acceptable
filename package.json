@@ -22,10 +22,11 @@
     "api"
   ],
   "scripts": {
-    "pretest": "eslint *.js test/*.js",
+    "pretest": "grunt",
     "test": "nyc --reporter=html --reporter=text mocha test",
     "posttest": "mocha --reporter markdown > TEST.md",
-    "lint": "eslint *.js test/*js"
+    "build": "grunt",
+    "lint": "grunt eslint"
   },
   "engines": {
     "node": ">= 6"
@@ -34,6 +35,8 @@
     "eslint": "^5.0.1",
     "eslint-config-scuba-squad": "^1.1.0",
     "express": "^4.16.3",
+    "grunt": "^1.0.3",
+    "grunt-eslint": "^21.0.0",
     "mocha": "^5.1.1",
     "nyc": "^11.7.1",
     "unit.js": "^2.0.0"
