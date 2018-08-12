@@ -1,5 +1,5 @@
 {
-  "name": "acceptable",
+  "name": "@scuba-squad/acceptable",
   "description": "Content negotiation middleware for Express and Restify",
   "version": "0.1.1",
   "public": true,
