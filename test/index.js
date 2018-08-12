@@ -31,43 +31,36 @@
       var test;
       test = acceptable('json', 'txt', 'html', 'jpeg', 'xml');
       unit.function(test);
-      return null;
     });
     it('should accept an array of extensions', function() {
       var test;
       test = acceptable(['json', 'txt', 'html', 'jpeg', 'xml']);
       unit.function(test);
-      return null;
     });
     it('should accept an argument list of mime types', function() {
       var test;
       test = acceptable('application/json', 'application/javascript', 'text/plain');
       unit.function(test);
-      return null;
     });
     it('should accept an array of mime types', function() {
       var test;
       test = acceptable(['application/json', 'application/javascript', 'text/plain']);
       unit.function(test);
-      return null;
     });
     it('should accept an argument list of extensions or mime types', function() {
       var test;
       test = acceptable('json', 'application/js', 'xml', 'text/plain');
       unit.function(test);
-      return null;
     });
     it('should accept an array of extensions or mime types', function() {
       var test;
       test = acceptable(['json', 'application/js', 'xml', 'text/plain']);
       unit.function(test);
-      return null;
     });
     it('should accept an argument list that contain arrays', function() {
       var test;
       test = acceptable('js', ['application/json', 'xml'], 'text/plain');
       unit.function(test);
-      return null;
     });
     it('should throw an error if any argument is not a string or array of strings', function() {
       unit.error(function() {
@@ -87,15 +80,12 @@
       }).error(function() {
         return acceptable({});
       });
-      return null;
     });
     it('should respond with 200 for acceptable content negotiation', function(done) {
       unit.httpAgent(app).get('/test').set('Accept', 'application/json').expect(200).end(done);
-      return null;
     });
     return it('should respond with 406 for unacceptable content negotiation', function(done) {
       unit.httpAgent(app).get('/test').set('Accept', 'application/xml').expect(406).end(done);
-      return null;
     });
   });
 
