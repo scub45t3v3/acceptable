@@ -21,7 +21,7 @@
     }); // end res.format
   }); // end app.get
 
-  app.use((err, req, res, next) => {
+  app.use((e, req, res, next) => {
     return res.status(406).send('Not Acceptable');
   });
 
@@ -135,4 +135,4 @@
         .end(done);
     }); // end it
   }); // end describe acceptable
-})(); // end IIFE
+})(); // end

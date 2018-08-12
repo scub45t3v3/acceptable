@@ -22,13 +22,17 @@
     "api"
   ],
   "scripts": {
+    "pretest": "eslint *.js test/*.js",
     "test": "nyc --reporter=html --reporter=text mocha test",
-    "posttest": "mocha --reporter markdown > TEST.md"
+    "posttest": "mocha --reporter markdown > TEST.md",
+    "lint": "eslint *.js test/*js"
   },
   "engines": {
     "node": ">= 6"
   },
   "devDependencies": {
+    "eslint": "^5.0.1",
+    "eslint-config-scuba-squad": "^1.1.0",
     "express": "^4.16.3",
     "mocha": "^5.1.1",
     "nyc": "^11.7.1",

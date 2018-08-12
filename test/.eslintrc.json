@@ -1,0 +1,25 @@
+{
+  "env": {
+    "mocha": true
+  },
+  "rules": {
+    "no-magic-numbers": [
+      "off"
+    ],
+    "max-lines": [
+      "off"
+    ],
+    "max-lines-per-function": [
+      "off"
+    ],
+    "max-statements": [
+      "off"
+    ],
+    "no-empty-function": [
+      "warn",
+      {
+        "allow": ["arrowFunctions"]
+      }
+    ]
+  }
+}
