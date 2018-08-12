@@ -1,48 +1,57 @@
-(function() {
-  var _, acceptable, debug, mime;
+(() => {
+  // include dependencies
+  const _ = require('underscore');
+  const mime = require('mime');
+  const debug = require('debug')('acceptable');
 
-  _ = require('underscore');
-
-  mime = require('mime');
-
-  debug = require('debug')('acceptable');
-
-  acceptable = function(...accept) {
+  const acceptable = (...accept) => {
     debug('Start building acceptable middleware');
     accept = _.flatten(accept);
     debug('Acceptable parameters %o', accept);
-    accept = _.map(accept, function(value) {
-      var ref, ref1;
-      if (!_.isString(value)) {
-        debug('Invalid extension or mime/type of %o', value);
-        throw new TypeError('Invalid extension or mime/type provided');
-      } else if (value != null ? typeof value.trim === "function" ? (ref = value.trim()) != null ? typeof ref.match === "function" ? ref.match(/^[\w-]+\/[\w\.\+-]+$/) : void 0 : void 0 : void 0 : void 0) {
-        return value.trim().toLowerCase();
-      } else if (value != null ? typeof value.trim === "function" ? (ref1 = value.trim()) != null ? typeof ref1.match === "function" ? ref1.match(/^[\w-]+$/) : void 0 : void 0 : void 0 : void 0) {
-        return mime.getType(value.trim().toLowerCase());
+
+    accept = _.map(accept, (value) => {
+      value = value && (value.toString() || `${value}`).trim().toLowerCase();
+      const ext = mime.getExtension(value);
+      const type = mime.getType(value);
+
+      if (ext) {
+        return value;
+      } else if (type) {
+        return type;
       }
+
+      debug('Invalid extension or mime/type of %o', value);
+
+      throw new TypeError('Invalid extension or mime/type provided');
     });
+
+    // empty accept so allow any mime/type
     if (!accept.length) {
       accept.push('*/*');
     }
+
     debug('Done building acceptable middleware using mime/type of %o', accept);
-    return function(req, res, next) {
-      var error;
+
+    return (req, res, next) => {
       debug('Executing acceptable middleware');
+
       if (req.accepts(accept)) {
         debug('URL %s accepts %s', req.url, req.headers.accept);
+
         return next();
       }
-      error = new Error();
+
+      const error = new Error();
       error.code = 406;
       error.status = 'Not Acceptable';
-      error.message = 'The requested document can not be provided as ';
-      error.message += req.headers.accept;
+      error.message = `The requested document can not be provided as ${req.headers.accept}`;
+
       debug('URL %s does not accept %s', req.url, req.headers.accept);
+
       return next(error);
     };
   };
 
+  // export middleware as commonjs module
   module.exports = acceptable;
-
-}).call(this);
+})(); // end IIFE
