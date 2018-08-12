@@ -1,3 +1,5 @@
+'use strict';
+
 (() => {
   // include dependencies
   const _ = require('underscore');

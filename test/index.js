@@ -1,3 +1,5 @@
+'use strict';
+
 (() => {
   // include dependencies
   const unit = require('unit.js');
