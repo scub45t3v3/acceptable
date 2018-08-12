@@ -4,6 +4,14 @@
  
 <a name="acceptable"></a>
 # #acceptable
+should accept no arguments to accept any mime type.
+
+```js
+const test = acceptable();
+unit
+  .function(test);
+```
+
 should accept an argument list of extensions.
 
 ```js

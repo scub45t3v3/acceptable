@@ -11,15 +11,15 @@
   app.use(acceptable('json', 'txt'));
 
   app.get('/test', (req, res, next) => {
-    return res.format({
-      'json': () => {
+    res.format({
+      json: () => {
         return res.status(200).send(req.headers);
       },
-      'default': () => {
+      default: () => {
         return res.status(200).send(req.headers.accept);
-      }
-    });
-  });
+      },
+    }); // end res.format
+  }); // end app.get
 
   app.use((err, req, res, next) => {
     return res.status(406).send('Not Acceptable');
@@ -27,6 +27,13 @@
 
   // describe acceptable
   describe('#acceptable', () => {
+    it('should accept no arguments to accept any mime type', () => {
+      const test = acceptable();
+
+      unit
+        .function(test);
+    }); // end it
+
     it('should accept an argument list of extensions', () => {
       const test = acceptable('json', 'txt', 'html', 'jpeg', 'xml');
 
