@@ -1,5 +1,6 @@
 # Acceptable
 [![Build Status](https://travis-ci.org/scub45t3v3/acceptable.svg?branch=master)](https://travis-ci.org/scub45t3v3/acceptable)
+[![Coverage Status](https://coveralls.io/repos/github/scub45t3v3/acceptable/badge.svg)](https://coveralls.io/github/scub45t3v3/acceptable)
 
 ## Purpose
 Error fast/early for *406 Not Acceptable* requests

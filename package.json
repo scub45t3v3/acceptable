@@ -22,16 +22,18 @@
     "api"
   ],
   "scripts": {
-    "pretest": "grunt",
-    "test": "nyc --reporter=html --reporter=text mocha test",
-    "posttest": "mocha --reporter markdown > TEST.md",
     "build": "grunt",
-    "lint": "grunt eslint"
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "lint": "grunt eslint",
+    "pretest": "grunt",
+    "test": "nyc --reporter=html --reporter=text --reporter=lcov mocha test",
+    "posttest": "mocha --reporter markdown > TEST.md"
   },
   "engines": {
     "node": ">= 6"
   },
   "devDependencies": {
+    "coveralls": "^3.0.2",
     "eslint": "^5.0.1",
     "eslint-config-scuba-squad": "^1.1.0",
     "express": "^4.16.3",
