@@ -4,12 +4,11 @@
   // include dependencies
   const _ = require('underscore');
   const mime = require('mime');
-  const debug = require('debug')('acceptable');
+  const debug = require('debug')('@scuba-squad:acceptable');
 
   const acceptable = (...accept) => {
-    debug('Start building acceptable middleware');
+    debug('build:acceptable(%o)', accept);
     accept = _.flatten(accept);
-    debug('Acceptable parameters %o', accept);
 
     accept = _.map(accept, (value) => {
       value = value && (value.toString() || `${value}`).trim().toLowerCase();
@@ -22,7 +21,7 @@
         return type;
       }
 
-      debug('Invalid extension or mime/type of %o', value);
+      debug('error:Invalid extension or mime/type of %o', value);
 
       throw new TypeError('Invalid extension or mime/type provided');
     });
@@ -32,13 +31,13 @@
       accept.push('*/*');
     }
 
-    debug('Done building acceptable middleware using mime/type of %o', accept);
+    debug('build:acceptable mime/type = %o', accept);
 
     return (req, res, next) => {
-      debug('Executing acceptable middleware');
+      debug('call:acceptable(req, res, next)');
 
       if (req.accepts(accept)) {
-        debug('URL %s accepts %s', req.url, req.headers.accept);
+        debug('success:URL %s accepts %s', req.url, req.headers.accept);
 
         return next();
       }
@@ -48,7 +47,7 @@
       error.status = 'Not Acceptable';
       error.message = `The requested document can not be provided as ${req.headers.accept}`;
 
-      debug('URL %s does not accept %s', req.url, req.headers.accept);
+      debug('error:URL %s does not accept %s', req.url, req.headers.accept);
 
       return next(error);
     };
