@@ -11,7 +11,7 @@
     accept = _.flatten(accept);
 
     accept = _.map(accept, (value) => {
-      value = value && (value.toString() || `${value}`).trim().toLowerCase();
+      value = `${value}`.trim().toLowerCase();
       const ext = mime.getExtension(value);
       const type = mime.getType(value);
 
