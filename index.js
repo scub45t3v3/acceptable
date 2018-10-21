@@ -2,29 +2,28 @@
 
 (() => {
   // include dependencies
-  const _ = require('underscore');
+  const {flatten} = require('underscore');
   const mime = require('mime');
   const debug = require('debug')('@scuba-squad:acceptable');
 
   const acceptable = (...accept) => {
     debug('build:acceptable(%o)', accept);
-    accept = _.flatten(accept);
+    accept = flatten(accept)
+      .map((value) => {
+        value = `${value}`.trim().toLowerCase();
+        const ext = mime.getExtension(value);
+        const type = mime.getType(value);
 
-    accept = _.map(accept, (value) => {
-      value = `${value}`.trim().toLowerCase();
-      const ext = mime.getExtension(value);
-      const type = mime.getType(value);
+        if (ext) {
+          return value;
+        } else if (type) {
+          return type;
+        }
 
-      if (ext) {
-        return value;
-      } else if (type) {
-        return type;
-      }
+        debug('error:Invalid extension or mime/type of %o', value);
 
-      debug('error:Invalid extension or mime/type of %o', value);
-
-      throw new TypeError('Invalid extension or mime/type provided');
-    });
+        throw new TypeError('Invalid extension or mime/type provided');
+      });
 
     // empty accept so allow any mime/type
     if (!accept.length) {
