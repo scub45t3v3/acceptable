@@ -8,34 +8,25 @@ Error fast/early for *406 Not Acceptable* requests
 ## Installation
 Via [npm](https://www.npmjs.com/)
 
-```
-npm install acceptable
+```bash
+npm install @scuba-squad/acceptable
 ```
 
 ## Usage
-*Coffeescript*
-
-```coffeescript
-express = require 'express'
-acceptable = require 'acceptable'
-
-app = express()
-app.use acceptable('json', 'txt', 'html', 'xml', 'js', 'jpg')
-```
-
-*Javascript*
 
 ```javascript
-var express = require('express');
-var acceptable = require('acceptable');
+const express = require('express');
+const acceptable = require('@scuba-squad/acceptable');
 
-var app = express();
+const app = express();
 
 app.use(acceptable('json', 'txt', 'html', 'xml', 'js', 'jpg'));
 ```
 
 ## Test
-```
+[tests](TEST.md)
+
+```bash
 npm install
 npm test
 ```
