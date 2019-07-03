@@ -33,19 +33,19 @@
     "node": ">= 6"
   },
   "devDependencies": {
-    "coveralls": "^3.0.2",
-    "eslint": "^5.5.0",
+    "coveralls": "^3.0.4",
+    "eslint": "^5.16.0",
     "eslint-config-scuba-squad": "^1.1.1",
-    "express": "^4.16.3",
-    "grunt": "^1.0.3",
-    "grunt-eslint": "^21.0.0",
-    "mocha": "^5.1.1",
-    "nyc": "^13.0.1",
-    "unit.js": "^2.0.0"
+    "express": "^4.17.1",
+    "grunt": "^1.0.4",
+    "grunt-eslint": "^21.1.0",
+    "mocha": "^6.1.4",
+    "nyc": "^14.1.1",
+    "unit.js": "^2.1.0"
   },
   "dependencies": {
-    "debug": "^4.1.0",
-    "mime": "^2.3.1",
+    "debug": "^4.1.1",
+    "mime": "^2.4.4",
     "underscore": "^1.9.0"
   }
 }
