@@ -94,7 +94,7 @@ unit
     acceptable(false);
   })
   .error(() => {
-    acceptable(/.*/);
+    acceptable(/.*/u);
   })
   .error(() => {
     acceptable(noop);
