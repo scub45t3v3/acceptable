@@ -11,11 +11,11 @@ app.use(acceptable('json', 'txt'));
 
 app.get('/test', (req, res, next) => {
   res.format({
-    json: () => {
-      return res.status(200).send(req.headers);
-    },
     default: () => {
       return res.status(200).send(req.headers.accept);
+    },
+    json: () => {
+      return res.status(200).send(req.headers);
     },
   }); // end res.format
 }); // end app.get
