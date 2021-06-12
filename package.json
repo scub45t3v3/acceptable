@@ -40,13 +40,13 @@
     "express": "^4.17.1",
     "grunt": "^1.2.1",
     "grunt-eslint": "^22.0.0",
-    "mocha": "^8.0.0",
+    "mocha": "~8.1.0",
     "nyc": "^15.1.0",
     "unit.js": "^2.1.0"
   },
   "dependencies": {
     "debug": "^4.1.1",
     "mime": "^2.4.6",
-    "underscore": "^1.10.2"
+    "underscore": "~1.12.0"
   }
 }
