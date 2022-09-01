@@ -1,5 +1,5 @@
 # Acceptable
-[![Build Status](https://travis-ci.org/scub45t3v3/acceptable.svg?branch=master)](https://travis-ci.org/scub45t3v3/acceptable)
+[![Build Status](https://github.com/scub45t3v3/acceptable/workflows/CI/badge.svg?event=push)](https://github.com/scub45t3v3/acceptable/actions)
 [![Coverage Status](https://coveralls.io/repos/github/scub45t3v3/acceptable/badge.svg)](https://coveralls.io/github/scub45t3v3/acceptable)
 
 ## Purpose
