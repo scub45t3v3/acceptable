@@ -22,10 +22,11 @@
     "api"
   ],
   "scripts": {
-    "build": "grunt",
+    "build": "npm run lint",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "lint": "grunt eslint",
-    "pretest": "grunt",
+    "lint": "npx eslint ./",
+    "lint:fix": "npm run lint -- --fix",
+    "pretest": "npm run build",
     "test": "nyc --reporter=html --reporter=text --reporter=lcov mocha test",
     "posttest": "mocha --reporter markdown > TEST.md",
     "preversion": "npm test"
@@ -38,8 +39,6 @@
     "eslint": "^6.7.0",
     "eslint-config-scuba-squad": "^2.0.3",
     "express": "^4.17.1",
-    "grunt": "^1.2.1",
-    "grunt-eslint": "^22.0.0",
     "mocha": "^8.4.0",
     "nyc": "^15.1.0",
     "unit.js": "^2.1.0"
